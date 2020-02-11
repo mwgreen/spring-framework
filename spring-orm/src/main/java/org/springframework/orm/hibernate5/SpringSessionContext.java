@@ -120,7 +120,9 @@ public class SpringSessionContext implements CurrentSessionContext {
 								new SpringFlushSynchronization(session));
 					}
 					return session;
-				}
+				} else {
+                                        throw new HibernateException("JTA TransactionManager found but status check failed");
+                                }
 			}
 			catch (SystemException ex) {
 				throw new HibernateException("JTA TransactionManager found but status check failed", ex);
