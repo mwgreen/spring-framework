@@ -121,7 +121,7 @@ public class SpringSessionContext implements CurrentSessionContext {
 					}
 					return session;
 				} else {
-                                        throw new HibernateException("JTA TransactionManager found but status check failed");
+                                        throw new HibernateException("JTA TransactionManager found but status check failed, status is: " + this.transactionManager.getStatus());
                                 }
 			}
 			catch (SystemException ex) {
